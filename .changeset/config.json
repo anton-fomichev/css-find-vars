@@ -3,7 +3,7 @@
   "changelog": [
     "@changesets/changelog-github",
     {
-      "repo": "https://github.com/anton-fomichev"
+      "repo": "anton-fomichev/css-find-vars"
     }
   ],
   "commit": false,
