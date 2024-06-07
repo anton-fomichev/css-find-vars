@@ -1,0 +1,50 @@
+{
+  "name": "css-find-vars",
+  "version": "0.1.0",
+  "description": "A CLI utility to find and list CSS variables in your project files",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "lint": "eslint . --ext .ts && tsc --noEmit"
+  },
+  "bin": {
+    "css-find-vars": "dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "css",
+    "variables",
+    "utility",
+    "cli",
+    "command-line"
+  ],
+  "author": {
+    "name": "Anton Fomichev",
+    "email": "av.fomichev01@yandex.ru",
+    "url": "https://github.com/anton-fomichev"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "yargs": "^17.7.2"
+  },
+  "devDependencies": {
+    "@gravity-ui/eslint-config": "^3.2.0",
+    "@types/node": "^14.18.63",
+    "@types/yargs": "^17.0.32",
+    "eslint": "^8.57.0",
+    "typescript": "^4.9.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anton-fomichev/css-find-vars.git"
+  },
+  "bugs": {
+    "url": "https://github.com/anton-fomichev/css-find-vars/issues"
+  },
+  "homepage": "https://github.com/anton-fomichev/css-find-vars#readme"
+}
