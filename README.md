@@ -32,11 +32,11 @@ The following options are available:
 
 | Option         | Alias | Type      | Default                  | Description                       |
 |----------------|-------|-----------|--------------------------|-----------------------------------|
-| --dir          | -d    | string    | ./                       | Directory to search               |
-| --pattern      | -p    | string    | --[\w-]+                 | CSS variable pattern              |
-| --extensions   | -e    | array     | ['.css']                 | File extensions to look for       |
-| --unique       | -u    | boolean   | false                    | Return unique variables only      |
 | --help         |       |           |                          | Show help                         |
+| --dir          | -d    | string    | ./                       | Directory to search               |
+| --pattern      | -p    | string    | --[\\w-]+(?=[;\\s,})])   | CSS variable pattern              |
+| --extensions   | -e    | array     | [".css", ".scss"]        | File extensions to look for       |
+| --unique       | -u    | boolean   | false                    | Return unique variables only      |
 
 ### Example
 
