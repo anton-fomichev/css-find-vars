@@ -1,13 +1,14 @@
 {
   "name": "css-find-vars",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "description": "A CLI utility to find and list CSS variables in your project files",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
-    "lint": "eslint . --ext .ts && tsc --noEmit"
+    "lint": "eslint . --ext .ts && tsc --noEmit",
+    "release": "npm run build && npx changeset publish"
   },
   "bin": {
     "css-find-vars": "dist/index.js"
@@ -27,12 +28,14 @@
     "email": "av.fomichev01@yandex.ru",
     "url": "https://github.com/anton-fomichev"
   },
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "chalk": "^4.1.2",
     "yargs": "^17.7.2"
   },
   "devDependencies": {
+    "@changesets/changelog-github": "^0.5.0",
+    "@changesets/cli": "^2.27.5",
     "@gravity-ui/eslint-config": "^3.2.0",
     "@types/node": "^14.18.63",
     "@types/yargs": "^17.0.32",
