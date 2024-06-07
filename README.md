@@ -43,6 +43,5 @@ The following options are available:
 To find all CSS variables in the `./styles` directory and return unique variables only:
 
 ```sh
-sh
 css-find-vars --dir ./styles --unique
 ```
