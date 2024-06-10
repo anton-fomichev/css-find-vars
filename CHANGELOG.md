@@ -1,5 +1,13 @@
 # css-find-vars
 
+## 0.2.1
+
+### Patch Changes
+
+- [#13](https://github.com/anton-fomichev/css-find-vars/pull/13) [`bfd6aa7`](https://github.com/anton-fomichev/css-find-vars/commit/bfd6aa718b00a288071f2ca4c4fe0c454c613a5e) Thanks [@anton-fomichev](https://github.com/anton-fomichev)! - fix(build): add shebang string
+
+  - Add build.cli.js script to insert shebang (#!/usr/bin/env node) to the compiled CLI executable.
+
 ## 0.2.0
 
 ### Minor Changes
