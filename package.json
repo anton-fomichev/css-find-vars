@@ -1,6 +1,6 @@
 {
   "name": "css-find-vars",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A CLI utility to find and list CSS variables in your project files",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
