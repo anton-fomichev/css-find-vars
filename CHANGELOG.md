@@ -1,5 +1,14 @@
 # css-find-vars
 
+## 0.2.0
+
+### Minor Changes
+
+- [#10](https://github.com/anton-fomichev/css-find-vars/pull/10) [`e34afb9`](https://github.com/anton-fomichev/css-find-vars/commit/e34afb988dc2e80690a6809c9cd19a5a343e2776) Thanks [@anton-fomichev](https://github.com/anton-fomichev)! - feat(cli): add ability to group by file and order
+
+  - Add `--order` option to the CLI for specifying the sorting order of data.
+  - Add `--group` option to the CLI for grouping data.
+
 ## 0.1.0
 
 ### Minor Changes
