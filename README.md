@@ -37,11 +37,31 @@ The following options are available:
 | --pattern      | -p    | string    | --[\\w-]+(?=[;\\s,})])   | CSS variable pattern              |
 | --extensions   | -e    | array     | [".css", ".scss"]        | File extensions to look for       |
 | --unique       | -u    | boolean   | false                    | Return unique variables only      |
+| --order        | -o    | string    | undefined                | Order variables alphabetically    |
+| --group        | -g    | string    | undefined                | Group variables by the file       |
 
-### Example
+### Examples
+
+#### Find all CSS variables in a specific directory
+
+To find all CSS variables in the `./styles` directory:
+
+```sh
+css-find-vars --dir ./styles
+```
+
+#### Find and return only unique variables
 
 To find all CSS variables in the `./styles` directory and return unique variables only:
 
 ```sh
 css-find-vars --dir ./styles --unique
+```
+
+#### Combine multiple options
+
+To find all CSS variables in the ./styles directory, return unique variables, sort them in ascending order, and group them by the file:
+
+```sh
+css-find-vars --dir ./styles --unique --order ASC --group file
 ```

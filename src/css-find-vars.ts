@@ -1,14 +1,21 @@
 import fs from "fs";
 import path from "path";
 
-export const cssFindVariables = (
-  dir: string,
-  pattern: string,
-  extensions: string[],
-  unique: boolean,
-): string[] => {
+import {
+  BaseFindOptions,
+  FindOptionsWithGroup,
+  FindOptionsWithOrder,
+  FindOptionsWithUnique,
+} from "./types";
+import { filterInPlaceByUnique, sortInPlace } from "./utils";
+
+const findCssVariablesByFile = ({
+  dir,
+  pattern,
+  extensions,
+}: BaseFindOptions): Record<string, string[]> => {
   const varPattern = new RegExp(pattern, "g");
-  const vars: string[] = [];
+  const varsByFile: Record<string, string[]> = {};
 
   function isFileMatchesExtensions(filename: string): boolean {
     return extensions.some((extension) => filename.endsWith(extension));
@@ -36,15 +43,59 @@ export const cssFindVariables = (
     const content = fs.readFileSync(fullPath, "utf-8");
     const matches = content.match(varPattern);
     if (matches) {
-      matches.forEach((variable) => vars.push(variable));
+      varsByFile[fullPath] = matches;
     }
   }
 
   execDirRecursive(dir, execFileContents);
 
+  return varsByFile;
+};
+
+const findCssVariablesWithGroup = ({
+  order,
+  unique,
+  ...options
+}: FindOptionsWithGroup & FindOptionsWithOrder & FindOptionsWithUnique) => {
+  const cssVariablesByFile = findCssVariablesByFile(options);
+
+  Object.entries(cssVariablesByFile).forEach(([, cssVariables]) => {
+    if (order) {
+      sortInPlace(cssVariables, order);
+    }
+    if (unique) {
+      filterInPlaceByUnique(cssVariables);
+    }
+  });
+
+  return cssVariablesByFile;
+};
+
+const findCssVariables = ({
+  order,
+  unique,
+  ...options
+}: FindOptionsWithOrder & FindOptionsWithUnique) => {
+  const flatCssVariables = Object.values(
+    findCssVariablesByFile(options),
+  ).flat();
+
+  if (order) {
+    sortInPlace(flatCssVariables, order);
+  }
   if (unique) {
-    return Array.from(new Set(vars)).sort();
+    filterInPlaceByUnique(flatCssVariables);
   }
 
-  return vars.sort();
+  return flatCssVariables;
+};
+
+export const cssFindVars = ({
+  group,
+  ...options
+}: FindOptionsWithGroup & FindOptionsWithOrder & FindOptionsWithUnique) => {
+  if (group === "file") {
+    return findCssVariablesWithGroup(options);
+  }
+  return findCssVariables(options);
 };
